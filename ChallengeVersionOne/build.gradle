@@ -1,0 +1,85 @@
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        // https://mvnrepository.com/artifact/net.serenity-bdd/serenity-gradle-plugin
+        //classpath("net.serenity-bdd:serenity-gradle-plugin:1.1.1")
+        //classpath("net.serenity-bdd:serenity-gradle-plugin:2.0.41")
+        classpath("net.serenity-bdd:serenity-gradle-plugin:2.1.6")
+    }
+}
+
+// Aplicacion de las Dependencias.
+apply plugin: "java"
+apply plugin: 'application'
+apply plugin: 'maven'
+apply plugin: "eclipse"
+apply plugin: "idea"
+apply plugin: 'java-library'
+
+apply plugin: "net.serenity-bdd.aggregator"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+/*    testCompile 'net.serenity-bdd:serenity-core:1.1.1'
+    testCompile 'net.serenity-bdd:serenity-junit:1.1.1'
+    testCompile('junit:junit:4.12')
+    testCompile('org.assertj:assertj-core:1.7.0')
+    testCompile('org.slf4j:slf4j-simple:1.7.7')
+
+    compile 'net.serenity-bdd:serenity-core:1.9.9'
+    compile 'net.serenity-bdd:serenity-junit:1.9.9'
+    compile 'net.serenity-bdd:serenity-cucumber:1.9.5'
+    compile 'net.serenity-bdd:serenity-screenplay:1.9.9'
+    compile 'net.serenity-bdd:serenity-screenplay-webdriver:1.9.9'
+
+    compile group: 'org.apache.poi', name: 'poi', version: '3.17'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.17'
+    compile group: 'org.apache.poi', name: 'poi-ooxml-schemas', version: '3.16'
+    compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.1' */
+
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.2'
+    compile 'org.apache.logging.log4j:log4j-api'
+    compile 'org.apache.logging.log4j:log4j-core'
+
+    testCompile 'net.serenity-bdd:serenity-core:2.1.6'
+    testCompile 'net.serenity-bdd:serenity-junit:2.1.6'
+    //testCompile 'junit:junit:4.12'
+    testCompile 'org.assertj:assertj-core:1.7.0'
+    testCompile 'org.slf4j:slf4j-simple:1.7.7'
+    testCompile group: 'org.apache.poi', name: 'poi', version: '4.0.0'
+
+    compile 'net.serenity-bdd:serenity-core:2.1.6'
+    compile 'net.serenity-bdd:serenity-junit:2.1.6'
+    //compile 'junit:junit:4.12'
+    compile 'net.serenity-bdd:serenity-cucumber:1.9.4'
+    compile 'net.serenity-bdd:serenity-screenplay:2.1.6'
+    compile 'net.serenity-bdd:serenity-screenplay-webdriver:2.1.6'
+    //compile group: 'org.apache.poi', name: 'poi', version: '4.0.0'
+    compile group: 'motiva', name: 'wait-for', version: '0.3.0'
+
+    compile group: 'org.apache.poi', name: 'poi', version: '4.0.1'
+    compile group: 'org.webjars.bower', name: 'angular', version: '1.7.7'
+    compile group: 'org.webjars.npm', name: 'canvas', version: '2.5.0'
+    //compile group: 'net.serenity-bdd', name: 'serenity-jira-plugin', version: '1.7.0'
+
+    // https://mvnrepository.com/artifact/com.oracle/ojdbc6
+    testCompile group: 'com.oracle', name: 'ojdbc6', version: '11.2.0.4.0-atlassian-hosted'
+
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.6.0-RC1'
+
+}
+gradle.startParameter.continueOnFailure = true
